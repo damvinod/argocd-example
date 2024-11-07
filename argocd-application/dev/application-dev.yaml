@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: application-stg
+  name: application-dev
 spec:
   destination:
     name: ''
     namespace: argocd
     server: https://kubernetes.default.svc
   source:
-    path: argocd-application/application-stg.yaml
+    path: argocd-application/dev
     repoURL: https://github.com/damvinod/argocd-example.git
     targetRevision: HEAD
   sources: []
-  project: demo-stg
+  project: demo-dev
   syncPolicy:
     automated:
       prune: false
