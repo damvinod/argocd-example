@@ -1,19 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: application-dev
+  name: guestbook-dev
 spec:
-  destination:
-    name: ''
-    namespace: argocd
-    server: https://kubernetes.default.svc
-  source:
-    path: argocd-application/dev
-    repoURL: https://github.com/damvinod/argocd-example.git
-    targetRevision: HEAD
-  sources: []
   project: demo-dev
+  source:
+    repoURL: https://github.com/damvinod/argocd-example.git
+    path: guestbook
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-dev.yaml
+      parameters:
+        - name: replicaCount
+          value: '1'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
