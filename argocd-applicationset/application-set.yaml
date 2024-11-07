@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: application-set
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - list:
+        elements:
+          - cluster: https://kubernetes.default.svc
+            namespace: dev
+            project: demo-dev
+            name: guestbook-app-set-dev
+          - cluster: https://kubernetes.default.svc
+            namespace: stg
+            project: demo-stg
+            name: guestbook-app-set-stg
+  template:
+    metadata:
+      name: "guestbook-{{namespace}}"
+    spec:
+      project: "{{project}}"
+      source:
+        repoURL: https://github.com/damvinod/argocd-example.git
+        targetRevision: main
+        path: guestbook
+        helm:
+          releaseName: "{{name}}"
+          valueFiles:
+            - "values.yaml"
+            - "values-{{name}}.yaml"
+      destination:
+        server: "{{url}}"
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
