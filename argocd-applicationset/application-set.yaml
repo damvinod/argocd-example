@@ -31,7 +31,7 @@ spec:
             - "values.yaml"
             - 'values-{{.namespace}}.yaml'
       destination:
-        server: '{{.url}}'
+        server: '{{.cluster}}'
         namespace: '{{.namespace}}'
       syncPolicy:
         automated:
