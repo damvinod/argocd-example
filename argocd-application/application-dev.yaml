@@ -8,7 +8,7 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   source:
-    path: argocd-application
+    path: argocd-application/application-dev.yaml
     repoURL: https://github.com/damvinod/argocd-example.git
     targetRevision: HEAD
   sources: []
