@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-set-main
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/damvinod/argocd-example.git
+    path: argocd-applicationset
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
