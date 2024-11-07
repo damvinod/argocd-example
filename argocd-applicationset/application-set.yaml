@@ -29,7 +29,7 @@ spec:
           releaseName: "{{name}}"
           valueFiles:
             - "values.yaml"
-            - "values-{{name}}.yaml"
+            - 'values-{{.namespace}}.yaml'
       destination:
         server: "{{url}}"
         namespace: "{{namespace}}"
