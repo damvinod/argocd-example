@@ -11,11 +11,11 @@ spec:
           - cluster: https://kubernetes.default.svc
             namespace: dev
             project: demo-dev
-            name: guestbook-app-set-dev
+            name: visitorbook-app-set-dev
           - cluster: https://kubernetes.default.svc
             namespace: stg
             project: demo-stg
-            name: guestbook-app-set-stg
+            name: visitorbook-app-set-stg
   template:
     metadata:
       name: '{{.name}}'
@@ -24,7 +24,7 @@ spec:
       source:
         repoURL: https://github.com/damvinod/argocd-example.git
         targetRevision: main
-        path: guestbook
+        path: visitorbook
         helm:
           releaseName: '{{.name}}'
           valueFiles:

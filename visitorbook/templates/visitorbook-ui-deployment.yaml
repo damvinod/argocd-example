@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visitorbook-ui
+spec:
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: visitorbook-ui
+  template:
+    metadata:
+      labels:
+        app: visitorbook-ui
+    spec:
+      containers:
+        - image: {{ .Values.image }}
+          name: visitorbook-ui
+          ports:
+            - containerPort: 80
