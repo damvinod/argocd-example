@@ -20,19 +20,19 @@ spec:
     metadata:
       name: '{{.name}}'
     spec:
-      project: "{{project}}"
+      project: '{{.project}}'
       source:
         repoURL: https://github.com/damvinod/argocd-example.git
         targetRevision: main
         path: guestbook
         helm:
-          releaseName: "{{name}}"
+          releaseName: '{{.name}}'
           valueFiles:
             - "values.yaml"
             - 'values-{{.namespace}}.yaml'
       destination:
-        server: "{{url}}"
-        namespace: "{{namespace}}"
+        server: '{{.url}}'
+        namespace: '{{.namespace}}'
       syncPolicy:
         automated:
           prune: false
