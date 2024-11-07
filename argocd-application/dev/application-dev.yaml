@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook-dev
+  name: application-dev
 spec:
   project: demo-dev
   source:
