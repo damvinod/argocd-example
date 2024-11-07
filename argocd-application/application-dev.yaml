@@ -1,0 +1,17 @@
+project: demo-dev
+source:
+  repoURL: https://github.com/damvinod/argocd-example.git
+  path: guestbook
+  targetRevision: main
+  helm:
+    valueFiles:
+      - values-dev.yaml
+destination:
+  server: https://kubernetes.default.svc
+  namespace: dev
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true

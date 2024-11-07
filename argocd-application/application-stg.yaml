@@ -1,0 +1,17 @@
+project: demo-stg
+source:
+  repoURL: https://github.com/damvinod/argocd-example.git
+  path: guestbook
+  targetRevision: main
+  helm:
+    valueFiles:
+      - values-stg.yaml
+destination:
+  server: https://kubernetes.default.svc
+  namespace: stg
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
