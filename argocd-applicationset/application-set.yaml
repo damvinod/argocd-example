@@ -5,6 +5,7 @@ metadata:
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
+  project: default
   generators:
     - list:
         elements:
