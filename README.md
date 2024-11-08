@@ -8,7 +8,6 @@
   - demo-dev
   - demo-stg
 
-
 ## Create Application
 
 ### Dev Env
@@ -18,5 +17,4 @@
 - Click on New App and choose Edit As YAML and copy [this](https://github.com/damvinod/argocd-example/blob/main/argocd-application/stg/application-stg.yaml) contents to create guestbook application in demo-stg project
 
 ## Create ApplicationSet
-
 -  Click on New App and choose Edit As YAML and copy [this](https://github.com/damvinod/argocd-example/blob/main/argocd-application/application-for-app-set.yaml) contents to create visitorbook application in demo-dev, demo-stg project
